@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bogomark</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="bogomark.js"></script>
+</head>
+
+<body>
+    <div id="page">
+        <header>
+            <h1>Bogomark</h1>
+            <p>Benchmark the <a href="https://en.wikipedia.org/wiki/Bogosort" target="_blank">bogosort</a> sorting algorithm</p>
+            <p>[<a href="https://github.com/Fylipp/bogomark" target="_blank">source</a>]</p>
+        </header>
+
+        <main>
+            <fieldset id="form">
+                <label for="input-size">Size</label>
+                <input id="input-size" type="number" step="1" min="1" value="10">
+                <br>
+                <label for="input-iterations">Iterations</label>
+                <input id="input-iterations" type="number" step="1" min="1" value="20">
+                <br>
+                <input id="btn-run" type="button" value="Run">
+            </fieldset>
+
+            <div id="progress" class="hide">
+                <p id="progress-percentage"></p>
+                <p id="progress-text"></p>
+            </div>
+
+            <div id="stats" class="hide">
+                <div id="summary" class="hide">
+                    <p id="reset">[<a href=".">reset</a>]</p>
+                    <table>
+                        <tr class="summary-category">
+                            <td class="summary-title">Size</td>
+                            <td id="summary-size" class="summary-value"></td>
+                        </tr>
+                        <tr class="summary-category">
+                            <td class="summary-title">Average</td>
+                            <td id="summary-avg" class="summary-value"></td>
+                        </tr>
+                        <tr class="summary-category">
+                            <td class="summary-title">Minimum</td>
+                            <td id="summary-min" class="summary-value"></td>
+                        </tr>
+                        <tr class="summary-category">
+                            <td class="summary-title">Maximum</td>
+                            <td id="summary-max" class="summary-value"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <span id="collapse-group" data-collapsed="1">
+                    <a id="btn-toggle-collapse" href="#"></a>
+                    <table id="individual-table">
+                        <thead>
+                            <tr>
+                                <th id="col-iteration">Iteration</th>
+                                <th>Milliseconds</th>
+                                <th>Steps</th>
+                            </tr>
+                        </thead>
+                        <tbody id="individual-content"></tbody>
+                    </table>
+                </span>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

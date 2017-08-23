@@ -1,0 +1,131 @@
+* {
+    font-family: sans-serif;
+}
+
+html, body {
+    background-color: #fafafa;
+
+    margin: 0 10px;
+}
+
+#page {
+    margin: 0 auto;
+}
+
+header {
+    border-bottom: 1px solid grey;
+}
+
+header > * {
+    text-align: center;
+}
+
+main {
+    margin-top: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label, input:not([type="button"]) {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 128px;
+}
+
+fieldset, input:not([type="button"]) {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+fieldset input:not([type="button"]) {
+    margin-bottom: 10px;
+}
+
+fieldset input[type="button"] {
+    width: 100%;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: blue;
+}
+
+#stats:not(.hide) {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#summary {
+    margin-bottom: 25px;
+}
+
+#reset {
+    text-align: center;
+}
+
+#progress{
+    text-align: center;
+}
+
+#progress-percentage {
+    font-size: 2em;
+}
+
+.summary-title{
+    font-size: 2em;
+    padding-right: 2em;
+}
+
+#collapse-group {
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#collapse-group[data-collapsed="1"] table {
+    display: none;   
+}
+
+#btn-toggle-collapse {
+    color: grey;
+    font-size: 2em;
+
+    display: block;
+    margin-bottom: 20px;
+}
+
+#collapse-group[data-collapsed="0"] #btn-toggle-collapse::after {
+    content: '▲';
+}
+
+#collapse-group[data-collapsed="1"] #btn-toggle-collapse::after {
+    content: '▼';
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#col-iteration {
+    padding-right: 10px;
+}
+
+#individual-table > tbody > tr:not(:last-child) > td {
+    border-bottom: 1px solid black;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
+.hide {
+    display: none;
+}
