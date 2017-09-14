@@ -1,5 +1,8 @@
 Number.prototype.toLocaleFixed = function (digits) {
-    return this.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return this.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 };
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -21,12 +24,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var collapseBtn = document.getElementById('btn-toggle-collapse');
     var table = document.getElementById('individual-content');
 
-    collapseBtn.onclick = function (event) {
+    var csvLink = document.getElementById('csv');
+
+    collapseBtn.onclick = function () {
         var collapsed = collapseGroup.getAttribute('data-collapsed') !== '0';
         collapseGroup.setAttribute('data-collapsed', collapsed ? '0' : '1');
     };
 
-    runBtn.onclick = function (event) {
+    runBtn.onclick = function () {
         var size = sizeInput.value;
         var iterations = iterationsInput.value;
 
@@ -61,6 +66,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
         var statStepsSum = 0;
 
         var i = 0;
+        var data = [
+            ['Iteration', 'Time', 'Steps'].join(';')
+        ];
 
         function benchmark() {
             if (i === iterations) {
@@ -70,6 +78,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 summaryAvg.innerText = (statMsSum / iterations).toLocaleFixed(2) + ' ms / ' + (statStepsSum / iterations).toLocaleFixed(2) + " steps";
                 progress.classList.add('hide');
                 summary.classList.remove('hide');
+
+                csvLink.href = 'data:attachment/csv,' + encodeURIComponent(data.join('\n'));
+                csvLink.download = 'bogomark.csv';
+
                 return;
             }
 
@@ -104,6 +116,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 }
 
                 statStepsSum += steps;
+
+                data.push([i + 1, time, steps].join(';'));
 
                 i++;
                 setTimeout(benchmark, 0);
